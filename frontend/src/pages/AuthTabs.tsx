@@ -1,7 +1,8 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import LogoHeader from "@/components/LogoHeader"
 import Information from "@/components/Information"
 import Login from "@/components/Login"
+import LogoHeader from "@/components/LogoHeader"
+import Register from "@/components/Register"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function AuthTabs() {
   return (
@@ -15,7 +16,7 @@ export default function AuthTabs() {
         </TabsList>
         <TabsContent value="information"><Information /></TabsContent>
         <TabsContent value="login"><Login /></TabsContent>
-        <TabsContent value="create">Create your Account here.</TabsContent>
+        <TabsContent value="create"><Register /></TabsContent>
       </Tabs>
       <p className="text-center text-gray-500 text-xs">&copy; Made by Minhaz</p>
     </>
