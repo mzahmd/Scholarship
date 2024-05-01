@@ -5,8 +5,8 @@ export default function AuthTabs() {
   return (
     <>
       <LogoHeader />
-      <Tabs defaultValue="information" className="content-center">
-        <TabsList className="">
+      <Tabs defaultValue="information" className="px-10 mx-auto">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="information">Information</TabsTrigger>
           <TabsTrigger value="login">Anmelden</TabsTrigger>
           <TabsTrigger value="create">Konto erstellen</TabsTrigger>
