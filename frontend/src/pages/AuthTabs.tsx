@@ -18,7 +18,7 @@ export default function AuthTabs() {
         <TabsContent value="login"><Login /></TabsContent>
         <TabsContent value="create"><Register /></TabsContent>
       </Tabs>
-      <p className="text-center text-gray-500 text-xs">&copy; Made by Minhaz</p>
+      <p className="text-center text-gray-500 text-xs">&copy; Made by Minhaz with &hearts;</p>
     </>
   )
 }
