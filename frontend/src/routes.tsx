@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthTabs from "./pages/AuthTabs";
-import Layout from "./pages/Layout";
-import Information from "./components/Information";
-import Applications from "./pages/Applications";
-import Profil from "./pages/Profile";
 import Administraion from "./pages/Administration";
+import Applications from "./pages/Applications";
+import AuthTabs from "./pages/AuthTabs";
+import Information from "./pages/Information";
+import Layout from "./pages/Layout";
+import Profil from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
