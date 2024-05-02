@@ -1,7 +1,13 @@
 export default function Login() {
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    await fetch("http://localhost:3000").then(r => r.json()).then(r => console.log(r))
+  }
+
   return (
     <div className="w-full max-w-xs mx-auto">
-      <form className="px-8 pt-6 pb-8 mb-4">
+      <form className="px-8 pt-6 pb-8 mb-4" onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="username">
             E-Mail-Adresse
@@ -15,7 +21,7 @@ export default function Login() {
           <input className="focus:border-sky-600 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" />
         </div>
         <div className="flex items-center justify-between">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Anmelden
           </button>
           <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
