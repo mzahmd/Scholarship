@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = mongoose.Schema({
   email: { type: String, required: true, unique: true },
@@ -9,9 +10,14 @@ const userSchema = mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 export async function createUser(params) {
-  await User.create({ ...params });
+  const hashedPassword = await hashPassword(params.password);
+  await User.create({ ...params, password: hashedPassword });
 }
 
 export async function findOneUser(user) {
   return await User.findOne({ email: user.email });
+}
+
+async function hashPassword(userPassword) {
+  return await bcrypt.hash(userPassword, 10);
 }

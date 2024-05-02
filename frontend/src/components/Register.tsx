@@ -14,13 +14,14 @@ export default function Register() {
     apiClient.post("/api/auth/register", { email, password, password_wdh })
       .then(data => data.data)
       .then(() => {
+        console.log("adfcsdf");
         return navigate("/user")
       })
       .catch((e) => {
-        console.log(e)
+        console.log(e.response.data.msg)
+        setPassword("")
+        setPassword_wdh("")
       })
-
-    return navigate("/user")
   }
 
   return (

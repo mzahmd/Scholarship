@@ -17,7 +17,7 @@ export default function Login() {
       })
       .catch((e) => {
         console.log("error")
-        console.log(e)
+        console.log(e.response.data.msg)
       })
   }
 

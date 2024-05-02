@@ -13,8 +13,16 @@ router.post("/login", async function (req, res) {
 });
 
 router.post("/register", async function (req, res) {
-  await createUser({ email: req.body.email, password: req.body.password });
-  res.json({ mesg: "Register Post" });
+  if (await findOneUser(req.body)) {
+    return res.status(409).json({ msg: "User already exists" });
+  }
+
+  await createUser({
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  res.status(201).send("success");
 });
 
 export default router;
