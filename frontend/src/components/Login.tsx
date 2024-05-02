@@ -1,8 +1,20 @@
+import { useNavigate } from "react-router-dom";
+import apiClient from "../services/api-client";
+
 export default function Login() {
+  const navigate = useNavigate()
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    await fetch("http://localhost:3000").then(r => r.json()).then(r => console.log(r))
+
+    apiClient.post("/api/auth/login", { email: "test@gmail.com" })
+      .then(data => data.data)
+      .then(() => {
+        return navigate("/user")
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   }
 
   return (

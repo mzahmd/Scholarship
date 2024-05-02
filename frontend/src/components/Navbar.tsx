@@ -40,7 +40,9 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="hidden md:block">
-          <Button className="h-max me-2">Abmelden</Button>
+          <Link to={"/"}>
+            <Button className="h-max me-2">Abmelden</Button>
+          </Link>
           <ModeToggle />
         </div>
       </div>
