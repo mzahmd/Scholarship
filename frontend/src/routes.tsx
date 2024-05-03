@@ -5,6 +5,9 @@ import AuthTabs from "./pages/AuthTabs";
 import Information from "./pages/Information";
 import Layout from "./pages/Layout";
 import Profil from "./pages/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+// TODO: implement the logic for protected routes
 
 const router = createBrowserRouter([
   {
@@ -25,7 +28,11 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true, element: <Profil />
+        index: true, element: (
+          <ProtectedRoute>
+            <Profil />
+          </ProtectedRoute>
+        )
       }
     ]
   },
@@ -34,7 +41,11 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true, element: <Applications />
+        index: true, element: (
+          <ProtectedRoute>
+            <Applications />
+          </ProtectedRoute>
+        )
       }
     ]
   },
@@ -42,7 +53,13 @@ const router = createBrowserRouter([
     path: "admin",
     element: <Layout />,
     children: [
-      { index: true, element: <Admin /> },
+      {
+        index: true, element: (
+          <ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>
+        )
+      },
     ]
   }
 ])
