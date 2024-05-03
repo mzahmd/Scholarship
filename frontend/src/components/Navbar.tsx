@@ -1,7 +1,7 @@
-import { Link, NavLink } from "react-router-dom";
-import { ModeToggle } from "./mode-toggle";
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { NavLink } from "react-router-dom";
+import SignOutButton from "./SignOutButton";
+import { ModeToggle } from "./mode-toggle";
 
 export default function Navbar() {
   const [isHidden, setHidden] = useState(true)
@@ -19,10 +19,10 @@ export default function Navbar() {
           </svg>
         </button>
         <div className="md:hidden">
-          <Link to={"/"}>
-            <Button className="h-max me-2">Abmelden</Button>
-          </ Link>
-          <ModeToggle />
+          <div className="flex">
+            <SignOutButton />
+            <ModeToggle />
+          </div>
         </div>
         <div className={`${isHidden ? "hidden" : "block"} w-full md:block md:w-auto`} id="navbar-solid-bg">
           <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
@@ -41,10 +41,10 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="hidden md:block">
-          <Link to={"/"}>
-            <Button className="h-max me-2">Abmelden</Button>
-          </Link>
-          <ModeToggle />
+          <div className="flex">
+            <SignOutButton />
+            <ModeToggle />
+          </div>
         </div>
       </div>
     </nav>
