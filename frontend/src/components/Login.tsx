@@ -10,6 +10,10 @@ export default function Login() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    if(!email || password) {
+      return;
+    }
+
     apiClient.post("/api/auth/login", { email, password })
       .then(() => navigate("/user"))
       .catch((e) => {

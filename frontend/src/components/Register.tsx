@@ -11,6 +11,10 @@ export default function Register() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    if(!email || !password || !password_wdh) {
+      return;
+    }
+
     apiClient.post("/api/auth/register", { email, password, password_wdh })
       .then(() => navigate("/user"))
       .catch((e) => {
