@@ -1,12 +1,20 @@
 import express from "express";
-import { createUser, findOneUser } from "../models/userModel.js";
+import {
+  comparePassword,
+  createUser,
+  findOneUser,
+} from "../models/userModel.js";
 
 const router = express.Router();
 
 router.post("/login", async function (req, res) {
   const user = await findOneUser(req.body);
   if (!user) {
-    return res.status(404).json({ msg: "User not found" });
+    return res.status(404).json({ msg: "Benutzer nicht gefunden" });
+  } else if (!await comparePassword(req.body.password, user.password)) {
+    return res
+      .status(404)
+      .json({ msg: "Email oder Passwort falsch eingegeben" });
   }
 
   res.status(200).send("Success");
@@ -14,7 +22,9 @@ router.post("/login", async function (req, res) {
 
 router.post("/register", async function (req, res) {
   if (await findOneUser(req.body)) {
-    return res.status(409).json({ msg: "User already exists" });
+    return res
+      .status(409)
+      .json({ msg: "Benutzer mit der Email-Adresse existiert schon" });
   }
 
   await createUser({

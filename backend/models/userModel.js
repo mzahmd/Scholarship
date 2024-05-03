@@ -21,3 +21,7 @@ export async function findOneUser(user) {
 async function hashPassword(userPassword) {
   return await bcrypt.hash(userPassword, 10);
 }
+
+export async function comparePassword(userPassword, hashedPassword) {
+  return await bcrypt.compare(userPassword, hashedPassword)
+}
