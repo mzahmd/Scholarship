@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Administraion from "./pages/Administration";
+import Admin from "./pages/Admin";
 import Applications from "./pages/Applications";
 import AuthTabs from "./pages/AuthTabs";
 import Information from "./pages/Information";
@@ -12,21 +12,37 @@ const router = createBrowserRouter([
     element: <AuthTabs />,
   },
   {
-    path: "user",
+    path: "information",
     element: <Layout />,
     children: [
       {
         index: true, element: <Information />
       },
-      { path: "applications", element: <Applications /> },
-      { path: ":id", element: <Profil /> }
+    ]
+  },
+  {
+    path: "user",
+    element: <Layout />,
+    children: [
+      {
+        index: true, element: <Profil />
+      }
+    ]
+  },
+  {
+    path: "applications",
+    element: <Layout />,
+    children: [
+      {
+        index: true, element: <Applications />
+      }
     ]
   },
   {
     path: "admin",
     element: <Layout />,
     children: [
-      { index: true, element: <Administraion /> },
+      { index: true, element: <Admin /> },
     ]
   }
 ])
