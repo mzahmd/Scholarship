@@ -10,7 +10,7 @@ export default function Login() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if(!email || password) {
+    if(!email || !password) {
       return;
     }
 
