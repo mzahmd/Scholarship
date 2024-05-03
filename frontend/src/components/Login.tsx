@@ -1,23 +1,22 @@
 import apiClient from "../services/api-client";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ErrorMsg from "./ErrorMsg";
 
 export default function Login() {
   const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if(!email || !password) {
-      return;
-    }
-
     apiClient.post("/api/auth/login", { email, password })
       .then(() => navigate("/user"))
       .catch((e) => {
-        console.log(e.response.data.msg)
+        setPassword("")
+        setError(e.response.data.msg)
       })
   }
 
@@ -28,14 +27,15 @@ export default function Login() {
           <label className="block text-sm font-bold mb-2" htmlFor="email">
             E-Mail-Adresse
           </label>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} className="focus:border-sky-600 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" />
+          <input onChange={(e) => setEmail(e.target.value)} value={email} className="focus:border-sky-600 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" required />
         </div>
         <div className="mb-6">
           <label className="block text-sm font-bold mb-2" htmlFor="password">
             Passwort
           </label>
-          <input onChange={(e) => setPassword(e.target.value)} value={password} className="focus:border-sky-600 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name="password" />
+          <input onChange={(e) => setPassword(e.target.value)} value={password} className="focus:border-sky-600 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name="password" required />
         </div>
+        {error && <ErrorMsg errorMsg={error} />}
         <div className="flex items-center justify-between">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Anmelden
