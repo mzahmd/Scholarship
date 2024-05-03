@@ -17,7 +17,6 @@ export default function Login() {
     apiClient.post("/api/auth/login", { email, password })
       .then(() => navigate("/user"))
       .catch((e) => {
-        console.log("error")
         console.log(e.response.data.msg)
       })
   }
