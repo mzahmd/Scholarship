@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 
 import authRouter from "./routes/authRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 const app = express();
 
@@ -28,5 +29,6 @@ app.use(
 await mongoose.connect(process.env.MONGODB_URL);
 
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
 app.listen(3000, () => console.log("Listening on Port 3000"));

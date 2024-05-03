@@ -1,9 +1,39 @@
-export default function Profil() {
+import apiClient from "@/services/api-client";
+import { useEffect, useState } from "react"
+
+interface User {
+  _id: string;
+  email: string
+}
+
+function ProfilInput({ label, value }: { label: string, value: string }) {
   return (
-    <>
-      <h1 className="text-4xl">
-        My Profile
-      </h1>
-    </>
+    <div className="mb-4 grid grid-cols-1 md:grid-cols-2">
+      <label className="self-end block text-sm font-bold" htmlFor="userID">{label}</label>
+      <div>
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="userID" type="text" value={value} />
+      </div>
+    </div>
+  )
+}
+
+export default function Profil() {
+  const [user, setUser] = useState<User>({} as User)
+
+  useEffect(() => {
+    apiClient.get("api/user")
+      .then(response => response.data)
+      .then(data => setUser(data[0]))
+      .catch(e => console.log(e.response.data))
+  }, [])
+
+  return (
+    <div className="mx-auto max-w-2xl rounded overflow-hidden shadow-lg">
+      <div className="px-6 py-4">
+        <div className="bg-gray-200 font-bold text-xl mb-2 p-1 rounded">Profil Daten</div>
+        <ProfilInput label={"Benutzer ID"} value={user._id} />
+        <ProfilInput label={"E-Mail"} value={user.email} />
+      </div>
+    </div>
   )
 }

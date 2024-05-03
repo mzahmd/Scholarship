@@ -18,6 +18,10 @@ export async function findOneUser(user) {
   return await User.findOne({ email: user.email });
 }
 
+export async function findAllUser() {
+  return await User.find();
+}
+
 async function hashPassword(userPassword) {
   return await bcrypt.hash(userPassword, 10);
 }
