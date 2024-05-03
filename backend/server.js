@@ -2,8 +2,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import session from "express-session";
+import cookieParser from "cookie-parser";
 
-dotenv.config()
+dotenv.config();
 
 import authRouter from "./routes/authRouter.js";
 
@@ -11,8 +13,19 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
+app.use(
+  session({
+    secret: "asdf",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // One day
+    },
+  })
+);
 
-await mongoose.connect(process.env.MONGODB_URL)
+await mongoose.connect(process.env.MONGODB_URL);
 
 app.use("/api/auth", authRouter);
 

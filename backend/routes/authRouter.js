@@ -17,7 +17,8 @@ router.post("/login", async function (req, res) {
       .json({ msg: "Email oder Passwort falsch eingegeben" });
   }
 
-  res.status(200).send("Success");
+  req.session.email = user.email;
+  res.status(200).send("success");
 });
 
 router.post("/register", async function (req, res) {
