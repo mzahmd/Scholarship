@@ -22,6 +22,10 @@ router.post("/login", async function (req, res) {
 });
 
 router.post("/register", async function (req, res) {
+  if (req.body.password !== req.body.password_wdh) {
+    return res.status(401).json({ msg: "Passwörter stimmen nicht über ein" });
+  }
+
   if (await findOneUser(req.body)) {
     return res
       .status(409)
