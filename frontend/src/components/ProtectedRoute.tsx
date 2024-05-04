@@ -1,7 +1,8 @@
-import { Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom";
 
-import useAuth from "@/hooks/useAuth"
-import Spinner from "./Spinner"
+import Spinner from "@/components/Spinner";
+
+import useAuth from "@/hooks/useAuth";
 
 interface Props {
   children: React.ReactNode

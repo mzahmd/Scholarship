@@ -9,6 +9,8 @@ dotenv.config();
 
 import authRouter from "./routes/authRouter.js";
 import userRouter from "./routes/userRouter.js";
+import adminRouter from "./routes/adminRouter.js";
+
 import { corsConfig } from "./config.js";
 
 const app = express();
@@ -31,5 +33,6 @@ await mongoose.connect(process.env.MONGODB_URL);
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/admin", adminRouter);
 
 app.listen(3000, () => console.log("Listening on Port 3000"));

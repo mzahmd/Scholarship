@@ -2,8 +2,11 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import SignOutButton from "./SignOutButton";
 import { ModeToggle } from "./mode-toggle";
+import useAdmin from "@/hooks/useAdmin";
 
 export default function Navbar() {
+  const { isAdmin } = useAdmin()
+
   const [isHidden, setHidden] = useState(true)
 
   function handleClick() {
@@ -32,9 +35,10 @@ export default function Navbar() {
             <li>
               <NavLink to="/applications" className="block py-2 px-3 md:p-0 rounded text-slate-500 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-600 md:dark:hover:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Bewerbungen</NavLink>
             </li>
-            <li>
+            {isAdmin && <li>
               <NavLink to="/admin" className="block py-2 px-3 md:p-0 rounded text-slate-500 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-600 md:dark:hover:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Administraion</NavLink>
             </li>
+            }
             <li>
               <NavLink to="/user" className="block py-2 px-3 md:p-0 rounded text-slate-500 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-600 md:dark:hover:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Profil</NavLink>
             </li>
