@@ -19,7 +19,11 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true, element: <Information />
+        index: true, element: (
+          <ProtectedRoute>
+            <Information />
+          </ProtectedRoute>
+        )
       },
     ]
   },

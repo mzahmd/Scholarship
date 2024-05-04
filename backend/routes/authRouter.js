@@ -7,6 +7,14 @@ import {
 
 const router = express.Router();
 
+router.get("/", function (req, res) {
+  if (req.session.userID) {
+    return res.status(200).send("success");
+  }
+  res.status(409).send("No valid user");
+});
+
+
 router.post("/login", async function (req, res) {
   const user = await findOneUserByEmail(req.body);
   if (!user) {
