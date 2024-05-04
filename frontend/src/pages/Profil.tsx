@@ -30,7 +30,7 @@ export default function Profil() {
   return (
     <div className="mx-auto max-w-3xl rounded overflow-hidden shadow-lg dark:bg-slate-900">
       <div className="px-6 py-4">
-        <div className="bg-gray-200 dark:bg-slate-700 font-bold text-xl mb-2 p-1 rounded">Profil Daten</div>
+        <div className="bg-gray-200 dark:bg-slate-700 font-bold text-xl mb-2 p-1 rounded">Profil</div>
         <ProfilInput label={"Benutzer ID"} value={user._id} />
         <ProfilInput label={"E-Mail"} value={user.email} />
       </div>
