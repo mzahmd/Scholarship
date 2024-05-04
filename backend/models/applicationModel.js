@@ -10,7 +10,5 @@ const applicationSchema = new mongoose.Schema({
 const Application = mongoose.model("application", applicationSchema);
 
 export async function findAllApplications(userID) {
-  const a = await Application.find({ userID: userID });
-  console.log(a);
-  return a;
+  return await Application.find({ userID: userID });
 }
