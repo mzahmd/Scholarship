@@ -14,8 +14,12 @@ export async function createUser(params) {
   await User.create({ ...params, password: hashedPassword });
 }
 
-export async function findOneUser(user) {
+export async function findOneUserByEmail(user) {
   return await User.findOne({ email: user.email });
+}
+
+export async function findOneUserByID(userID) {
+  return await User.findOne({ _id: userID });
 }
 
 export async function findAllUser() {
@@ -27,5 +31,5 @@ async function hashPassword(userPassword) {
 }
 
 export async function comparePassword(userPassword, hashedPassword) {
-  return await bcrypt.compare(userPassword, hashedPassword)
+  return await bcrypt.compare(userPassword, hashedPassword);
 }

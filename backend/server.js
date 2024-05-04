@@ -9,11 +9,12 @@ dotenv.config();
 
 import authRouter from "./routes/authRouter.js";
 import userRouter from "./routes/userRouter.js";
+import { corsConfig } from "./config.js";
 
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsConfig));
 app.use(cookieParser());
 app.use(
   session({

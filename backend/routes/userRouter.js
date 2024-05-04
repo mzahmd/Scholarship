@@ -1,12 +1,15 @@
 import express from "express";
 
-import { findAllUser } from "../models/userModel.js";
+import { findOneUserByID } from "../models/userModel.js";
 
 const router = express.Router();
 
 router.get("/", async function (req, res) {
-  const user = await findAllUser();
-  res.status(200).send(user);
+  if(req.session.userID) {
+    const user = await findOneUserByID(req.session.userID);
+    return res.status(200).send(user);
+  }
+  res.status(409).send("failed");
 });
 
 export default router;

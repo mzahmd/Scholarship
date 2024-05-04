@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
+
 import Admin from "./pages/Admin";
 import Applications from "./pages/Applications";
 import AuthTabs from "./pages/AuthTabs";
 import Information from "./pages/Information";
 import Layout from "./pages/Layout";
-import Profil from "./pages/Profile";
-import ProtectedRoute from "./components/ProtectedRoute";
+import Profil from "./pages/Profil";
 
-// TODO: implement the logic for protected routes
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {

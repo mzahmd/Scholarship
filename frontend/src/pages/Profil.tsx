@@ -23,7 +23,7 @@ export default function Profil() {
   useEffect(() => {
     apiClient.get("api/user")
       .then(response => response.data)
-      .then(data => setUser(data[0]))
+      .then(data => data && setUser(data))
       .catch(e => console.log(e.response.data))
   }, [])
 

@@ -2,13 +2,13 @@ import express from "express";
 import {
   comparePassword,
   createUser,
-  findOneUser,
+  findOneUserByEmail,
 } from "../models/userModel.js";
 
 const router = express.Router();
 
 router.post("/login", async function (req, res) {
-  const user = await findOneUser(req.body);
+  const user = await findOneUserByEmail(req.body);
   if (!user) {
     return res.status(404).json({ msg: "Benutzer nicht gefunden" });
   } else if (!(await comparePassword(req.body.password, user.password))) {
@@ -17,7 +17,8 @@ router.post("/login", async function (req, res) {
       .json({ msg: "Email oder Passwort falsch eingegeben" });
   }
 
-  req.session.user = user.email;
+  req.session.userID = user._id;
+  req.session.save();
   res.status(200).send("success");
 });
 
@@ -26,7 +27,7 @@ router.post("/register", async function (req, res) {
     return res.status(401).json({ msg: "Passwörter stimmen nicht über ein" });
   }
 
-  if (await findOneUser(req.body)) {
+  if (await findOneUserByEmail(req.body)) {
     return res
       .status(409)
       .json({ msg: "Benutzer mit der Email-Adresse existiert schon" });
@@ -48,8 +49,9 @@ router.post("/logout", function (req, res) {
       }
     });
 
-    res.status(200).send("success");
+    return res.status(200).send("success");
   }
+  res.status(401).send("failed to logout");
 });
 
 export default router;

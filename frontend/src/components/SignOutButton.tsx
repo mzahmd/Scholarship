@@ -1,11 +1,15 @@
 import { Button } from "./ui/button";
+import { useNavigate } from "react-router-dom";
+
 import apiClient from "@/services/api-client";
 
 export default function SignOutButton() {
+  const navigate = useNavigate()
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     apiClient.post("api/auth/logout", {})
+      .then(() => navigate("/"))
       .catch(e => console.log(e.response.data))
   }
 
