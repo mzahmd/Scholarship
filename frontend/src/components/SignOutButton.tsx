@@ -15,7 +15,7 @@ export default function SignOutButton() {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <Button className="h-max me-2" type="submit">Abmelden</Button>
+      <Button className="h-max me-2 hover:bg-slate-700 dark:hover:bg-slate-600" type="submit">Abmelden</Button>
     </form>
   )
 }
