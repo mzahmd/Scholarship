@@ -11,7 +11,7 @@ function ProfilInput({ label, value }: { label: string, value: string }) {
     <div className="mb-4 grid grid-cols-1 md:grid-cols-2">
       <label className="self-end block text-base font-bold" htmlFor="userID">{label}</label>
       <div>
-        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="userID" type="text" value={value} />
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="userID" type="text" defaultValue={value} />
       </div>
     </div>
   )
@@ -21,9 +21,8 @@ export default function Profil() {
   const [user, setUser] = useState<User>({} as User)
 
   useEffect(() => {
-    apiClient.get("api/user")
-      .then(response => response.data)
-      .then(data => data && setUser(data))
+    apiClient.get<User>("api/user")
+      .then(response => setUser(response.data))
       .catch(e => console.log(e.response.data))
   }, [])
 
