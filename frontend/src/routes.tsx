@@ -8,6 +8,7 @@ import Layout from "./pages/Layout";
 import Profil from "./pages/Profil";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import ApplicationCreate from "./pages/ApplicationCreate";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,11 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <Applications />
           </ProtectedRoute>
-        )
+        ),
+      },
+      {
+        path: "create",
+        element: <ApplicationCreate />
       }
     ]
   },
