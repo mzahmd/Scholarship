@@ -6,7 +6,6 @@ import useIsAdmin from "@/hooks/useIsAdmin";
 
 export default function Navbar() {
   const { data: isAdmin } = useIsAdmin()
-
   const [isHidden, setHidden] = useState(true)
 
   function handleClick() {
