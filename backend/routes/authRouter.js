@@ -26,6 +26,7 @@ router.post("/login", async function (req, res) {
   }
 
   req.session.userID = user._id;
+  req.session.isAdmin = user.isAdmin;
   req.session.save();
   res.status(200).send("success");
 });

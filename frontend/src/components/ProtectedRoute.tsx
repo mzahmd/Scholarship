@@ -14,10 +14,11 @@ export default function ProtectedRoute({ children }: Props) {
   if (isLoading) {
     return <Spinner />
   }
-
+  
   if (error) {
     return <Navigate to={"/"} replace />
   }
+  
 
   return children;
 }

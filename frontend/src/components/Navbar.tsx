@@ -2,10 +2,10 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import SignOutButton from "./SignOutButton";
 import { ModeToggle } from "./mode-toggle";
-import useAdmin from "@/hooks/useAdmin";
+import useIsAdmin from "@/hooks/useIsAdmin";
 
 export default function Navbar() {
-  const { isAdmin } = useAdmin()
+  const { isAdmin } = useIsAdmin()
 
   const [isHidden, setHidden] = useState(true)
 

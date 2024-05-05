@@ -1,12 +1,17 @@
 import express from "express";
-import { findAllApplications } from "../models/applicationModel.js";
+import { findAllApplications, findApplicationsByUserID } from "../models/applicationModel.js";
 
 const router = express.Router();
 
 router.get("/", async function (req, res) {
-  const applications = await findAllApplications();
+  if(req.session.isAdmin) {
+    const applications = await findAllApplications();
+    res.send(applications);
+  } else {
+    const applications = await findApplicationsByUserID(req.session.userID);
+    res.send(applications);
+  }
 
-  res.send(applications);
 });
 
 export default router;

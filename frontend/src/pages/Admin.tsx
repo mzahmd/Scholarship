@@ -1,20 +1,16 @@
-import apiClient from "@/services/api-client";
-import { useEffect, useState } from "react"
-
-interface User {
-  _id: string;
-  email: string;
-}
+import Spinner from "@/components/Spinner";
+import useAllUser from "@/hooks/useAllUser";
 
 export default function Admin() {
-  const [users, setUsers] = useState<User[]>([]);
+  const { data: users, error, isLoading } = useAllUser()
 
-  useEffect(() => {
-    apiClient.get("/api/user/all")
-      .then(response => response.data)
-      .then(data => setUsers(data))
-      .catch(e => console.log(e))
-  }, [])
+  if (isLoading) {
+    return <Spinner />
+  }
+
+  if (error) {
+    return <p>{error}</p>
+  }
 
   return (
     <div className="overflow-x-auto">

@@ -13,6 +13,9 @@ router.get("/", async function (req, res) {
 });
 
 router.get("/all", async function (req, res) {
+  if(!req.session.isAdmin) {
+    return res.status(400).send(users);
+  }
   const users = await findAllUser();
   return res.status(200).send(users);
 });
