@@ -6,8 +6,8 @@ import useIsAdmin from "@/hooks/useIsAdmin";
 import useApplications from "@/hooks/useApplications";
 
 export default function Applications() {
-  const { data: isAdmin } = useIsAdmin()
   const navigate = useNavigate()
+  const { data: isAdmin } = useIsAdmin()
   const { data: applications, error, isLoading } = useApplications()
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
