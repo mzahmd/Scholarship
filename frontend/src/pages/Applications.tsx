@@ -25,7 +25,9 @@ export default function Applications() {
 
   return (
     <>
-      {applications && <p className="text-lg">Sieht so aus als ob es keine Bewerbungen gäbe</p>}
+      {!applications ? <p className="text-lg">Sieht so aus als ob es keine Bewerbungen gäbe</p> 
+      : 
+      applications.map(application => <p>{application.degree}</p>)}
       {!isAdmin &&
         <form onSubmit={(e) => handleSubmit(e)}>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-3" type="submit">
