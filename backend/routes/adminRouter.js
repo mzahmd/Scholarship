@@ -3,7 +3,7 @@ import { findOneUserByID } from "../models/userModel.js";
 
 const router = express.Router();
 
-router.get("/", async function (req, res) {
+router.get("/isadmin", async function (req, res) {
   const user = await findOneUserByID(req.session.userID);
 
   if (!user) {

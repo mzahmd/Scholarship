@@ -7,7 +7,7 @@ interface Response {
 }
 
 export default function useIsAdmin() {
-  const { data: isAdmin, error, isLoading } = useGetData<Response>("admin");
+  const { data: isAdmin, error, isLoading } = useGetData<Response>("admin/isadmin");
   
   return { isAdmin, error, isLoading };
 }
