@@ -27,7 +27,7 @@ function FormDropdown({ title, id, onChange }: FormProps) {
     <div className="mb-4 grid grid-cols-1 md:grid-cols-2">
       <label className="self-end block text-base font-bold" htmlFor={id}>{title}</label>
       <select className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-blue-500 block p-2.5 dark:focus:border-blue-500" onChange={onChange} name={id} id={id} required>
-        <option value={""} disabled></option>
+        <option value={"--- Liste der Studiengänge ---"} disabled selected></option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
