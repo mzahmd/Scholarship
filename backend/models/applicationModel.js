@@ -10,14 +10,9 @@ const applicationSchema = new mongoose.Schema({
 const Application = mongoose.model("application", applicationSchema);
 
 export async function findApplicationsByUserID(userID) {
-  const id = new mongoose.Schema.ObjectId(userID);
-  // console.log(userID);
-  // console.log("-".repeat(20));
-  // console.log(id);
-
-  return await Application.find({
-    // userID: id,
-  });
+  return await Application.aggregate([
+    { $match: { userID: new mongoose.Schema.Types.ObjectId(userID) } },
+  ]);
 }
 
 export async function findAllApplications() {
