@@ -13,7 +13,6 @@ router.get("/", async function (req, res) {
     res.send(applications);
   } else {
     const applications = await findApplicationsByUserID(req.session.userID);
-    console.log(applications);
     res.send(applications);
   }
 });

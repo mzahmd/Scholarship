@@ -1,6 +1,7 @@
 import useGetData from "./useGetData";
 
 interface Application {
+  _id: string;
   department: string;
   degree: string;
   facultysemester: string;
