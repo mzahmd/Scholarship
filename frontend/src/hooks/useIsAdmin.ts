@@ -1,13 +1,11 @@
 import useGetData from "./useGetData";
 
 interface Response {
-  data: boolean;
-  error: string;
-  isLoading: boolean;
+  isAdmin: boolean
 }
 
 export default function useIsAdmin() {
-  const { data: isAdmin, error, isLoading } = useGetData<Response>("admin/isadmin");
-  
-  return { isAdmin, error, isLoading };
+  const { data, error, isLoading } = useGetData<Response>("admin/isadmin");
+
+  return { data, error, isLoading };
 }

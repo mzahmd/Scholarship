@@ -5,7 +5,7 @@ import { ModeToggle } from "./mode-toggle";
 import useIsAdmin from "@/hooks/useIsAdmin";
 
 export default function Navbar() {
-  const { isAdmin } = useIsAdmin()
+  const { data: isAdmin } = useIsAdmin()
 
   const [isHidden, setHidden] = useState(true)
 
