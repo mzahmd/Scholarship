@@ -1,13 +1,13 @@
-import { Application2 } from "@/hooks/useApplications"
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "./ui/button"
-import { User } from "@/hooks/useAllUser"
+import { Application } from "@/interfaces/Application"
+import { User } from "@/interfaces/User"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 
-export const applicationColumns: ColumnDef<Application2>[] = [
+export const applicationColumns: ColumnDef<Partial<Application>>[] = [
   {
     accessorKey: "userID",
     header: ({ column }) => {
