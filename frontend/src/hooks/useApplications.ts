@@ -7,6 +7,12 @@ interface Application {
   facultysemester: string;
   userID: string;
 }
+export interface Application2 {
+  department: string;
+  degree: string;
+  facultysemester: string;
+  userID: string;
+}
 
 export default function useApplications() {
   const { data, error, isLoading } = useGetData<Application[]>("applications");
