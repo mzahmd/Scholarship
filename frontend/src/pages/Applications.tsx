@@ -6,7 +6,7 @@ import useIsAdmin from "@/hooks/useIsAdmin";
 import useApplications from "@/hooks/useApplications";
 
 export default function Applications() {
-  const { isAdmin } = useIsAdmin()
+  const { data: isAdmin } = useIsAdmin()
   const navigate = useNavigate()
   const { data: applications, error, isLoading } = useApplications()
 
