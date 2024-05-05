@@ -1,6 +1,7 @@
 import FormContainer from "@/components/FormContainer";
 import apiClient from "@/services/api-client";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type ChangeEvent = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
 
@@ -47,6 +48,7 @@ function FormInputNumber({ title, id, onChange }: FormProps) {
 }
 
 export default function ApplicationCreate() {
+  const navigate = useNavigate()
   const [department, setDepartment] = useState("")
   const [degree, setDegree] = useState("")
   const [facultysemester, setFacultysemester] = useState("")
@@ -55,7 +57,7 @@ export default function ApplicationCreate() {
     e.preventDefault();
 
     apiClient.post("api/applications/create", { department, degree, facultysemester })
-      .then(response => console.log(response.data))
+      .then(() => navigate("/applications"))
       .catch(e => console.log(e.response.data))
   }
 
