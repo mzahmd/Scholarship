@@ -3,8 +3,8 @@ import reactSvg from "@/assets/react.svg"
 export default function Information() {
   return (
     <>
-      <h1 className="text-4xl">Destip</h1>
-      <p className="my-3">Welcome to my Destip page</p>
+      <h1 className="text-4xl">Scholarship</h1>
+      <p className="my-3">Welcome to my Scholarship page</p>
       <div className="flex">
         <img src={reactSvg} className="me-1" />
         <h2 className="text-3xl">Bewerbungsphase</h2>
